@@ -1,0 +1,15 @@
+{% extends 'master.html' %}
+{% block contenido %}
+<div class="well">
+    <h1 style="color: black">Login</h1>
+    <form method="post">{% csrf_token %}
+        {% for field in f %}
+            <div style="color: black">
+                {{ field.label_tag }}<br>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Ingresar">
+    </form>
+</div>
+{% endblock %}

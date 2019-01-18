@@ -1,0 +1,40 @@
+{% extends "../index1.html" %}
+
+{% block body %}
+
+<a class="buttonBack" href="/clientes/cuentas">Volver</a>
+<br>
+<table >
+            <input onchange="recibir()" id="txt_buscar" type="text" style="width: 200px" placeholder="Cuenta a transferir" value="">
+            <a id="boton_buscar" style="background-color: #4e555b; width: 100px; height: 50px; font-size: 25px" class="btn btn-success"><i style="font-size: 20px" class="fab fa-sistrix">Buscar</i></a>
+        </table>
+        <script>
+            function recibir() {
+                var valor = document.getElementById("txt_buscar").value;
+                document.getElementById("boton_buscar").href = 'transferencia?txt_buscar='+valor+'&numero={{ cliente }}';
+            }
+        </script>
+
+
+{% endblock %}
+{% block js %}
+<script>
+    var eliminar = function(id){
+        $.ajax({
+            url: "eliminar",
+            method: "POST",
+            data: { id : id }
+        }).success(function( msj ) {
+            if(msj == "eliminado"){
+
+            }
+            if(msj == "no eliminado"){
+
+            }
+            if(msj == "perdido"){
+
+            }
+        });
+    }
+</script>
+{% endblock %}
